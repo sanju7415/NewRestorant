@@ -1,3 +1,143 @@
+<!DOCTYPE html>
+<html>
 
-<h1>Restaurant Menu</h1>
-<p>This is our menu page.</p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Restaurant</title>
+  <style>
+body{
+  background: #1A227F;
+  padding : 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 100px;
+}
+h1{
+  color: #fff;
+  font-weight: bold;
+}
+
+#menu-wrapper{
+  background: #1E8F46;
+  width: 600px;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 0 20px rgba(0, 25, 45, 0.5);
+  margin: auto;
+}
+#menu-item input {
+  margin-right: 20px;
+}
+#menu-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.price{
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px 0;
+}
+input[type="text"],
+input[type="number"]{
+  margin-top: 20px;
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 20px;
+}
+button{
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background: blue;
+  color: #fff;
+}
+  </style>
+</head>
+
+<body>
+
+<h1>My Restaurant Page</h1>
+  
+<div id="menu-wrapper">
+
+<h2>Apna Order Chune</h2>
+
+<form action="" id="order-menu">
+
+<div id="menu-item">
+<label>
+<input type="checkbox" name="item" value="Pizza" data-price="150"> Pizza
+</label>
+<span class="price">₹150</span>
+</div>
+
+<div id="menu-item">
+<label>
+<input type="checkbox" name="item" value="Samosa" data-price="15"> Samosa
+</label>
+<span class="price">₹15</span>
+</div>
+  
+<div id="menu-item">
+<label>
+<input type="checkbox" name="item" value="Aalu Dosa" data-price="150"> Aalu Dosa
+</label>
+<span class="price">₹150</span>
+</div>
+
+<input type="text" id="customerName" placeholder="Enter Your Name">
+<input type="number" id="customerTable" placeholder="Enter Your Table Number">
+
+<button onclick="sendOrder()">Send Order To My WhatsApp Number</button>
+  
+</form>
+  
+</div>
+
+<script>
+function sendOrder(){
+let items = document.querySelectorAll('input[name="item"]:checked');
+
+let customerName = document.getElementById("customerName").value;
+let tableNumber = document.getElementById("customerTable").value;
+
+if (items.length === 0 || customerName === "" || tableNumber === "") {
+  alert("❗ Please select at least one item and enter all details.");
+  return;
+}
+
+let orderList = "";
+let totalAmount = 0;
+
+items.forEach((item)=>{
+  let price = item.getAttribute("data-price");
+  totalAmount += parseInt(price);
+  orderList += `*${item.value} - ₹${price}*\n`;
+});
+
+let currentDate = new Date().toLocaleDateString();
+let currentTime = new Date().toLocaleTimeString();
+
+let message = encodeURIComponent(
+`*Thanks for your order!* \n\n` +
+`📅 *Date:* ${currentDate}\n` +
+`🕒 *Time:* ${currentTime}\n\n` +
+`👤 *Customer:* ${customerName}\n` +
+`📍 *Table No:* ${tableNumber}\n\n` +
+`${orderList}\n` +
+`💰 *Total Bill:* ₹${totalAmount}\n\n` +
+`⏳ *Status:* Pending\n` +
+`🍽️ Your food will be served soon! ❤️`
+);
+
+let whatsAppNumber = "917974489066";
+let whatspUrl = `https://wa.me/${whatsAppNumber}?text=${message}`;
+window.open(whatspUrl, "_blank");
+
+}
+</script>
+
+</body>
+</html>
