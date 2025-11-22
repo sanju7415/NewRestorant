@@ -1,142 +1,219 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Restaurant</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eat Non Stop Menu</title>
+
+<style>
+
 body{
-  background: #1A227F;
-  padding : 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-top: 100px;
-}
-h1{
-  color: #fff;
-  font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    background: #eef2f3;
+    padding: 20px;
+    margin: 0;
 }
 
-#menu-wrapper{
-  background: #1E8F46;
-  width: 600px;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 0 0 20px rgba(0, 25, 45, 0.5);
-  margin: auto;
+/* ===== HEADER ===== */
+.header{
+    background: linear-gradient(135deg, #0fb65e, #0b8a48);
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 18px;
+    font-size: 30px;
+    font-weight: 700;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.2);
+    letter-spacing: 1px;
 }
-#menu-item input {
-  margin-right: 20px;
+
+/* ===== MENU BOX ===== */
+.menu-container{
+    background: #ffffff;
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 18px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    animation: fadeIn 0.4s ease-in-out;
 }
-#menu-item{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+@keyframes fadeIn{
+    from{ opacity: 0; transform: translateY(20px); }
+    to{ opacity: 1; transform: translateY(0); }
 }
+
+/* ===== TITLE ===== */
+.title{
+    text-align: center;
+    color: #0b8a48;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* ===== LIST ITEMS ===== */
+.menu-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 10px;
+    background: #fafafa;
+    margin: 12px 0;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.menu-item:hover{
+    background: #f1fff4;
+    transform: scale(1.02);
+}
+
+.menu-item label{
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+/* Checkbox styling */
+.menu-item input{
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+
 .price{
-  color: red;
-  font-weight: bold;
-  font-size: 20px;
-  margin: 10px 0;
+    font-weight: 700;
+    color: #e74c3c;
+    font-size: 18px;
 }
-input[type="text"],
-input[type="number"]{
-  margin-top: 20px;
-  border: 2px solid #ccc;
-  padding: 10px;
-  border-radius: 20px;
+
+/* ===== INPUT FIELD ===== */
+input[type="text"], input[type="number"]{
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    border-radius: 12px;
+    font-size: 16px;
+    border: 2px solid #d7d7d7;
+    outline: none;
+    transition: 0.3s;
 }
+input[type="text"]:focus, input[type="number"]:focus{
+    border-color: #0fb65e;
+    background-color: #f7fff9;
+}
+
+/* ===== BUTTON ===== */
 button{
-  margin-top: 20px;
-  padding: 10px;
-  border-radius: 10px;
-  background: blue;
-  color: #fff;
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg, #0fb65e, #0b8a48);
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-  </style>
+button:hover{
+    transform: scale(1.04);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+</style>
 </head>
 
 <body>
 
-<h1>My Restaurant Page</h1>
-  
-<div id="menu-wrapper">
+<div class="header">🍽 Eat Non Stop Menu</div>
 
-<h2>Apna Order Chune</h2>
+<div class="menu-container">
 
-<form action="" id="order-menu">
+<h3 class="title">Choose Your Delicious Food</h3>
 
-<div id="menu-item">
-<label>
-<input type="checkbox" name="item" value="Pizza" data-price="150"> Pizza
-</label>
+<form id="orderForm">
+
+<div class="menu-item">
+<label><input type="checkbox" name="item" value="Pizza" data-price="250"> 🍕 Pizza</label>
+<span class="price">₹250</span>
+</div>
+
+<div class="menu-item">
+<label><input type="checkbox" name="item" value="Burger" data-price="150"> 🍔 Burger</label>
 <span class="price">₹150</span>
 </div>
 
-<div id="menu-item">
-<label>
-<input type="checkbox" name="item" value="Samosa" data-price="15"> Samosa
-</label>
-<span class="price">₹15</span>
-</div>
-  
-<div id="menu-item">
-<label>
-<input type="checkbox" name="item" value="Aalu Dosa" data-price="150"> Aalu Dosa
-</label>
-<span class="price">₹150</span>
+<div class="menu-item">
+<label><input type="checkbox" name="item" value="Pasta" data-price="200"> 🍝 Pasta</label>
+<span class="price">₹200</span>
 </div>
 
-<input type="text" id="customerName" placeholder="Enter Your Name">
-<input type="number" id="customerTable" placeholder="Enter Your Table Number">
+<div class="menu-item">
+<label><input type="checkbox" name="item" value="Fries" data-price="100"> 🍟 Fries</label>
+<span class="price">₹100</span>
+</div>
 
-<button onclick="sendOrder()">Send Order To My WhatsApp Number</button>
-  
+<div class="menu-item">
+<label><input type="checkbox" name="item" value="Cold Drink" data-price="50"> 🥤 Cold Drink</label>
+<span class="price">₹50</span>
+</div>
+
+<input type="text" id="customerName" placeholder="Enter your Name">
+<input type="number" id="tableNumber" placeholder="Table Number">
+
+<button type="button" onclick="sendOrder()">📩 Send Order on WhatsApp</button>
+
 </form>
-  
 </div>
 
 <script>
+
 function sendOrder(){
+
 let items = document.querySelectorAll('input[name="item"]:checked');
+let name = document.getElementById("customerName").value;
+let table = document.getElementById("tableNumber").value;
 
-let customerName = document.getElementById("customerName").value;
-let tableNumber = document.getElementById("customerTable").value;
-
-if (items.length === 0 || customerName === "" || tableNumber === "") {
-  alert("❗ Please select at least one item and enter all details.");
-  return;
+if(items.length === 0 || name === "" || table === ""){
+    alert("⚠️ Please select at least one item and fill all details.");
+    return;
 }
 
-let orderList = "";
-let totalAmount = 0;
+let list = "";
+let total = 0;
 
-items.forEach((item)=>{
-  let price = item.getAttribute("data-price");
-  totalAmount += parseInt(price);
-  orderList += `*${item.value} - ₹${price}*\n`;
+items.forEach(item=>{
+    let price = item.getAttribute("data-price");
+    total += parseInt(price);
+    list += `🍽 *${item.value}* — ₹${price}\n`;
 });
 
-let currentDate = new Date().toLocaleDateString();
-let currentTime = new Date().toLocaleTimeString();
+let date = new Date().toLocaleDateString();
+let time = new Date().toLocaleTimeString();
 
-let message = encodeURIComponent(
-`*Thanks for your order!* \n\n` +
-`📅 *Date:* ${currentDate}\n` +
-`🕒 *Time:* ${currentTime}\n\n` +
-`👤 *Customer:* ${customerName}\n` +
-`📍 *Table No:* ${tableNumber}\n\n` +
-`${orderList}\n` +
-`💰 *Total Bill:* ₹${totalAmount}\n\n` +
-`⏳ *Status:* Pending\n` +
-`🍽️ Your food will be served soon! ❤️`
+let msg = encodeURIComponent(
+`🍽 *Eat Non Stop – Order Summary* 🍽\n\n` +
+`📆 *Date:* ${date}\n🕒 *Time:* ${time}\n\n` +
+`👤 *Customer:* ${name}\n🪑 *Table No:* ${table}\n\n` +
+`🍔 *Items Ordered:*\n${list}\n` +
+`💵 *Total Amount:* ₹${total}\n\n` +
+`✅ *Status:* Pending\n\n` +
+`🙏 Thanks for ordering from *Eat Non Stop* ❤️`
 );
 
-let whatsAppNumber = "917974489066";
-let whatspUrl = `https://wa.me/${whatsAppNumber}?text=${message}`;
-window.open(whatspUrl, "_blank");
+let number = "917974489066";
+window.open(`https://wa.me/${number}?text=${msg}`, "_blank");
 
 }
+
 </script>
 
 </body>
